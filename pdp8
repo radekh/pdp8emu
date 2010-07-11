@@ -1,0 +1,43 @@
+#!/usr/bin/env ruby
+require 'rubygems'
+require 'wx'
+
+class MainFrame < Wx::Frame
+  def initialize *args
+    super nil, :title => 'PDP-8' # :pos=>[x,y], :size=>[w,h]
+    @panel = Wx::Panel.new self
+
+    setup_menu
+    setup_events
+  end
+
+
+  def setup_menu
+    mb = Wx::MenuBar.new
+
+    file_menu = Wx::Menu.new
+    file_menu.append(Wx::ID_EXIT, "Exit")
+    mb.append(file_menu, "File")
+
+    set_menu_bar mb
+  end
+
+  def setup_events
+    evt_menu(Wx::ID_EXIT) { | e | on_exit } 
+  end
+
+  def on_exit
+    close true
+  end
+end
+
+
+class Pdp8GUI < Wx::App
+  def on_init
+    MainFrame.new.show
+  end
+end
+
+if $0 == __FILE__
+  Pdp8GUI.new.main_loop
+end
