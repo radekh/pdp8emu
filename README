@@ -1,0 +1,7 @@
+This is simple project where I learn and test how to work with wxRuby.
+Goal of this project is to build pdp8 emulator which is enough
+functional and give it a nice GUI in wxRuby.  Resulting code should be
+tested under different Unix/Linux versions and distributions and also
+Microsoft Windows XP.
+
+--Radek Hnilica
