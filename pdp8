@@ -16,18 +16,31 @@ class MainFrame < Wx::Frame
     mb = Wx::MenuBar.new
 
     file_menu = Wx::Menu.new
-    file_menu.append(Wx::ID_EXIT, "Exit")
-    mb.append(file_menu, "File")
+    file_menu.append Wx::ID_EXIT, "Exit"
+    mb.append file_menu, "File"
+
+    help_menu = Wx::Menu.new
+    help_menu.append Wx::ID_ABOUT, "About..."
+    mb.append help_menu, "Help"
 
     set_menu_bar mb
   end
 
   def setup_events
-    evt_menu(Wx::ID_EXIT) { | e | on_exit } 
+    evt_menu(Wx::ID_EXIT) { |e| on_exit }
+    evt_menu(Wx::ID_ABOUT) { |e| on_about }
   end
 
   def on_exit
     close true
+  end
+
+  def on_about
+    msg = "PDP-8 simulator program in Ruby\nWritten by Radek Hnilica\n(c) Copyright 2010"
+    dlg = Wx::MessageDialog.new self, :message => msg,
+                                      :caption => "About program",
+                                      :style => Wx::OK
+    dlg.show_modal
   end
 end
 
