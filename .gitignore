@@ -1,4 +1,8 @@
 # .gitignore
 
+# Bundler files
+.bundle
+
 # Editor working and backup files
 *~
+*.swp
